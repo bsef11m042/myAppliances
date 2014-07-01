@@ -1,0 +1,88 @@
+﻿
+<form method="post" action="Home\AddMember">
+
+<div class="row">
+         <div class="span4">
+             <ul class="nav nav-list">
+    <li class="nav-header">What we are?</li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Our Clients</a></li>
+    <li><a href="#">Our Services</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li class="nav-header">Our Parteners</li>
+    <li><a href="www.sony.com">Sony</a></li>
+    <li><a href="www.samsun.com">Samsung</a></li>
+    <li><a href="www.pell.com">Pell</a></li>
+    <li><a href="www.toshiba.com">Toshiba</a></li>
+    <li><a href="www.haier.com">Haier</a></li>
+    <li><a href="www.dawlance.com">Dawlance</a></li>
+    <li><a href="www.kenwood.com">kenwood</a></li>
+    <li><a href="www.national.com">National</a></li>
+    <li><a href="www.orients.com">Orient</a></li>
+</ul>
+         </div>
+     <div class="span8">
+        
+  <div class="form-group">
+   Name:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="FName" class="form-control" placeholder="First">
+      &nbsp;&nbsp;
+      <input type="text" name="LName" class="form-control" placeholder="Last">
+      <br />
+   Address:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Countary" class="form-control" placeholder="Countary">
+      &nbsp;&nbsp;
+      <input type="text" name="City" class="form-control" placeholder="City">
+    <br />
+   CNIC: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="CNIC" id="Cnic" class="form-control" placeholder="CNIC">
+    <br />
+ 
+   Phone No.:  &nbsp;&nbsp;&nbsp;<input type="text" name="Phone" class="form-control" placeholder="Phone">
+      <br />
+   UserName:  &nbsp;&nbsp;&nbsp;<input type="text" name="UserName" id="UserName" class="form-control" placeholder="UserName">
+      <div id="result" style="color:red"></div>
+      <br />
+   Password:  &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Password" id="Pass" class="form-control" placeholder="Passwords" >
+    <script>
+
+        $(document).ready(function () {
+
+           
+            $("#UserName").focusout(function () {
+
+                var userName = $("#UserName").val();
+
+                //alert('User Name ='+ userName);
+              
+                $.getJSON("/Home/VerifyUser?UserName=" + userName, function (data) {
+                  
+                   
+                    if (data!=null) {
+                        $("#result").text("UserName Not Available");
+
+                    }
+                    else {
+                        $("#result").text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+
+    
+       </div>
+    
+    <br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="submit" class="btn btn-success">Register</button>
+   <button type="reset" class="btn btn-danger">Clear</button>
+    <br />
+
+
+         </div>
+
+</div>
+    </form>
+<hr />

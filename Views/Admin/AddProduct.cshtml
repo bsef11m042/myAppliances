@@ -1,0 +1,32 @@
+﻿@model myAppliances.Models.Product
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div>
+
+    @using (Html.BeginForm("Add", "Admin", FormMethod.Post, new { enctype="multipart/form-data" }))
+    {
+        
+    @Html.Label("ProductName", "Product Name:")
+    @Html.TextBoxFor(x => x.ProductName)
+    
+      @Html.Label("CompanyName", "Company Name:")
+    @Html.TextBoxFor(x => x.CompanyName)
+
+      @Html.Label("Model", "Model:")
+    @Html.TextBoxFor(x => x.Model)
+
+      @Html.Label("Price", "Price:")
+    @Html.TextBoxFor(x => x.Price)
+
+         @Html.Label("Image", "Upload Image:")
+       <input type="file" id="image"/>
+        
+        
+         <input type="submit" value="Insert Product" />
+         <input type="reset" value="Clear" />
+    }
+
+
+</div>
